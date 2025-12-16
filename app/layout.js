@@ -1,13 +1,13 @@
+import Link from "next/link";
+
 export const metadata = {
   title: "Products Store",
-  description: "A simple Next.js products app",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        {/* Header */}
         <header
           style={{
             padding: "15px",
@@ -16,12 +16,14 @@ export default function RootLayout({ children }) {
           }}
         >
           <h1>Products Store</h1>
-          <p>Navigation coming soon...</p>
+
+          <nav style={{ display: "flex", gap: "15px" }}>
+            <Link href="/">Home</Link>
+            <Link href="/products">Products</Link>
+          </nav>
         </header>
 
-        <main style={{ padding: "20px" }}>
-          {children}
-        </main>
+        <main style={{ padding: "20px" }}>{children}</main>
 
         <footer
           style={{
@@ -31,7 +33,7 @@ export default function RootLayout({ children }) {
             marginTop: "20px",
           }}
         >
-          <p>© 2025 Products Store. All rights reserved.</p>
+          <p>© 2025 Products Store</p>
         </footer>
       </body>
     </html>
