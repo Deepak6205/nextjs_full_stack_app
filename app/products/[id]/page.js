@@ -1,93 +1,51 @@
+import ProductImage from "@/app/components/ProductImage";
+
 export const dynamic = "force-dynamic";
 
 export default async function ProductDetailsPage({ params }) {
   const { id } = await params;
 
-  const res = await fetch(
-    `https://dummyjson.com/products/${id}`,
-    { cache: "no-store" }
-  );
+  const res = await fetch(`https://dummyjson.com/products/${id}`, {
+    cache: "no-store",
+  });
 
   const product = await res.json();
 
   return (
-    <div
-      style={{
-        maxWidth: "1000px",
-        margin: "40px auto",
-        padding: "24px",
-        border: "1px solid #e5e5e5",
-        borderRadius: "14px",
-        display: "flex",
-        gap: "40px",
-        backgroundColor: "#fff",
-      }}
-    >
-      {/* Image Section */}
-      <div>
-        <img
-          src={product.thumbnail}
-          alt={product.title}
-          style={{
-            width: "380px",
-            height: "380px",
-            objectFit: "cover",
-            borderRadius: "12px",
-            border: "1px solid #ddd",
-          }}
-        />
-      </div>
+    <div className="max-w-5xl mx-auto bg-white border rounded-2xl p-6 flex gap-10">
+      <ProductImage
+        src={product.thumbnail || "/product-placeholder.jpg"}
+        alt={product.title}
+        className="w-[380px] h-[380px] object-cover rounded-xl border"
+      />
 
-      {/* Details Section */}
-      <div style={{ flex: 1 }}>
-        <h1 style={{ marginBottom: "10px" }}>
+      <div className="flex-1">
+        <h1 className="text-3xl text-gray-800 font-bold mb-2">
           {product.title}
         </h1>
 
-        <p style={{ color: "#777", marginBottom: "8px" }}>
+        <p className="text-gray-700 mb-4">
           Brand: <strong>{product.brand}</strong> • Category:{" "}
           <strong>{product.category}</strong>
         </p>
 
-        <p
-          style={{
-            color: "#555",
-            lineHeight: "1.7",
-            marginBottom: "20px",
-          }}
-        >
+        <p className="text-gray-600 leading-relaxed mb-6">
           {product.description}
         </p>
 
-        {/* Price Section */}
-        <div
-          style={{
-            marginBottom: "15px",
-            fontSize: "20px",
-          }}
-        >
-          💰 <strong>${product.price}</strong>{" "}
-          <span
-            style={{
-              fontSize: "14px",
-              color: "green",
-              marginLeft: "10px",
-            }}
-          >
+        <p className="text-xl text-gray-950 font-semibold mb-2">
+          💰 ${product.price}{" "}
+          <span className="text-green-600 text-sm">
             ({product.discountPercentage}% OFF)
           </span>
-        </div>
-
-        {/* Rating & Stock */}
-        <p style={{ marginBottom: "10px" }}>
-          ⭐ <strong>{product.rating}</strong> rating
         </p>
 
-        <p>
-          📦{" "}
-          <strong>
-            {product.stock > 0 ? "In Stock" : "Out of Stock"}
-          </strong>
+        <p className="mb-2 text-gray-950">
+          ⭐ <strong>{product.rating}</strong>
+        </p>
+
+        <p className="text-gray-950">
+          📦 <strong>{product.stock > 0 ? "In Stock" : "Out of Stock"}</strong>
           {product.stock > 0 && ` (${product.stock} items available)`}
         </p>
       </div>

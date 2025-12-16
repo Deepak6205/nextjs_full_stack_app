@@ -1,4 +1,5 @@
 import Link from "next/link";
+import "./globals.css";
 
 export const metadata = {
   title: "Products Store",
@@ -7,33 +8,48 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
-        <header
-          style={{
-            padding: "15px",
-            backgroundColor: "#f2f2f2",
-            borderBottom: "1px solid #ccc",
-          }}
-        >
-          <h1>Products Store</h1>
+      <body className="min-h-screen flex flex-col bg-gray-50 text-gray-900 antialiased">
+        <header className="sticky top-0 z-50 bg-gradient-to-r from-blue-300 to-blue-200 border-b">
+          <div className="w-full px-6 py-4 flex items-center justify-between">
+            <Link href="/" className="text-2xl font-extrabold tracking-tight">
+              🛒 Products<span className="text-blue-600">Store</span>
+            </Link>
 
-          <nav style={{ display: "flex", gap: "15px" }}>
-            <Link href="/">Home</Link>
-            <Link href="/products">Products</Link>
-          </nav>
+            <nav className="flex items-center gap-8 text-sm font-semibold">
+              <Link
+                href="/"
+                className="text-gray-700 hover:text-blue-700 transition"
+              >
+                Home
+              </Link>
+              <Link
+                href="/products"
+                className="text-gray-700 hover:text-blue-700 transition"
+              >
+                Products
+              </Link>
+            </nav>
+          </div>
         </header>
 
-        <main style={{ padding: "20px" }}>{children}</main>
+        <main className="flex-1 w-full px-6 py-12">{children}</main>
 
-        <footer
-          style={{
-            padding: "15px",
-            backgroundColor: "#f2f2f2",
-            borderTop: "1px solid #ccc",
-            marginTop: "20px",
-          }}
-        >
-          <p>© 2025 Products Store</p>
+        <footer className="bg-white border-t">
+          <div className="w-full px-6 py-6 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-sm text-gray-500">
+              © 2025 Products Store. All rights reserved.
+            </p>
+
+            <div className="flex gap-6 text-sm text-gray-500">
+              <span className="hover:text-blue-600 cursor-pointer">
+                Privacy
+              </span>
+              <span className="hover:text-blue-600 cursor-pointer">Terms</span>
+              <span className="hover:text-blue-600 cursor-pointer">
+                Contact
+              </span>
+            </div>
+          </div>
         </footer>
       </body>
     </html>

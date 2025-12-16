@@ -2,45 +2,20 @@ import Link from "next/link";
 
 export default function HomePage() {
   return (
-    <div
-      style={{
-        minHeight: "70vh",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      <div
-        style={{
-          textAlign: "center",
-          maxWidth: "600px",
-        }}
-      >
-        <h1 style={{ fontSize: "42px", marginBottom: "15px" }}>
+    <div className="min-h-[70vh] flex items-center justify-center text-center">
+      <div className="max-w-xl">
+        <h1 className="text-4xl font-bold mb-4">
           Welcome to Products Store 🛒
         </h1>
 
-        <p
-          style={{
-            fontSize: "18px",
-            color: "#555",
-            marginBottom: "30px",
-          }}
-        >
-          Discover high-quality products with best prices, ratings,
-          and detailed descriptions — all in one place.
+        <p className="text-gray-600 text-lg mb-8">
+          Discover high-quality products with prices, ratings, and
+          detailed information powered by a real API.
         </p>
 
         <Link
           href="/products"
-          style={{
-            backgroundColor: "#0070f3",
-            color: "white",
-            padding: "12px 24px",
-            borderRadius: "8px",
-            textDecoration: "none",
-            fontSize: "16px",
-          }}
+          className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg text-lg hover:bg-blue-700 transition"
         >
           Explore Products →
         </Link>
