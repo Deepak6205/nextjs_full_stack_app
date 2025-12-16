@@ -25,7 +25,7 @@ export default async function ProductsPage() {
                 className="w-full h-40 object-cover rounded-t-xl"
               />
 
-              <span className="absolute top-2 left-2 bg-blue-600 text-white text-[11px] font-semibold px-2 py-0.5 rounded">
+              <span className="absolute top-2 left-2 bg-green-400 text-white text-[11px] font-semibold px-2 py-0.5 rounded">
                 {product.discountPercentage}% OFF
               </span>
             </div>

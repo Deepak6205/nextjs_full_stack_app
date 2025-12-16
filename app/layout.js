@@ -11,8 +11,15 @@ export default function RootLayout({ children }) {
       <body className="min-h-screen flex flex-col bg-gray-50 text-gray-900 antialiased">
         <header className="sticky top-0 z-50 bg-gradient-to-r from-blue-300 to-blue-200 border-b">
           <div className="w-full px-6 py-4 flex items-center justify-between">
-            <Link href="/" className="text-2xl font-extrabold tracking-tight">
-              🛒 Products<span className="text-blue-600">Store</span>
+            <Link href="/" className="flex items-center gap-3">
+              <img
+                src="/logo.png"
+                alt="Products Store Logo"
+                className="h-10 w-10 object-contain"
+              />
+              <span className="text-2xl font-extrabold tracking-tight">
+                Products<span className="text-blue-600">Store</span>
+              </span>
             </Link>
 
             <nav className="flex items-center gap-8 text-sm font-semibold">
