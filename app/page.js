@@ -1,5 +1,8 @@
 import Link from "next/link";
-
+export const metadata = {
+  title: "This is Homepage",
+  description: "Welcome to my homepage built with Next.js",
+};
 export default function HomePage() {
   return (
     <div className="min-h-[70vh] flex items-center justify-center text-center">
