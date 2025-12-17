@@ -19,20 +19,24 @@ export default function LoginPage() {
   }, [router]);
 
   async function handleSubmit(e) {
-    e.preventDefault();
-    setError("");
+  e.preventDefault();
+  setError("");
 
-    const res = await fetch("/api/login", {
-      method: "POST",
-      body: JSON.stringify({ email, password }),
-    });
+  const res = await fetch("/api/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email, password }),
+  });
 
-    if (res.ok) {
-      router.push("/products"); // ✅ correct redirect
-    } else {
-      setError("Invalid email or password");
-    }
+  if (res.ok) {
+    router.push("/protected");
+  } else {
+    setError("Invalid email or password");
   }
+}
+
 
   return (
     <div className="min-h-[70vh] flex items-center justify-center">
