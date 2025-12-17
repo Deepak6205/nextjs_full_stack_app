@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
@@ -8,6 +8,15 @@ export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+
+  // ✅ ADD THIS (only needed change)
+  useEffect(() => {
+    fetch("/api/me").then((res) => {
+      if (res.ok) {
+        router.replace("/products");
+      }
+    });
+  }, [router]);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -19,7 +28,7 @@ export default function LoginPage() {
     });
 
     if (res.ok) {
-      router.push("/protected");
+      router.push("/products"); // ✅ correct redirect
     } else {
       setError("Invalid email or password");
     }

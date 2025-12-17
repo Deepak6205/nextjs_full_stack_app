@@ -1,0 +1,19 @@
+import { NextResponse } from "next/server";
+
+export function middleware(req) {
+  // ✅ Correct way to read cookies in middleware
+  const token = req.cookies.get("token")?.value;
+
+  const { pathname } = req.nextUrl;
+
+  // Protect products routes
+  if (pathname.startsWith("/products") && !token) {
+    return NextResponse.redirect(new URL("/login", req.url));
+  }
+
+  return NextResponse.next();
+}
+
+export const config = {
+  matcher: ["/products/:path*"],
+};
